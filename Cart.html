@@ -1,60 +1,154 @@
+<!-- /cart.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Ecommerce Navbar</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
-
-    
+  <style>
+    .cart-img { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; }
+    .item-title { font-weight: 600; }
+    .quantity-controls button { min-width: 32px; }
+    .summary-container ,.cart-item-list{ border: 1px solid #dee2e6; border-radius: 8px; padding: 1.5rem; background: #f8f9fa; }
+    .summary-container h5 { margin-bottom: 1rem; }
+    .summary-container .btn { font-weight: 500; font-size: 1.1rem; }
+  </style>
 </head>
 <body>
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom py-3">
-  <div class="container">
-    <a class="navbar-brand fw-bold" href="#">Ecommerce</a>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarContent">
-      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" href="/Index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/Products.html">Products</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/About.html">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/Contact.html">Contact</a>
-        </li>
-      </ul>
-
-      <div class="d-flex gap-2">
-        <a href="Login.html" class="btn btn-outline-secondary">
-          <i class="fa-solid fa-right-to-bracket"></i> Login
-        </a>
-        <a href="Register.html" class="btn btn-outline-secondary">
-          <i class="fa-solid fa-user-plus"></i> Register
-        </a>
-        <a href="Cart.html" class="btn btn-outline-secondary">
-          <i class="fa-solid fa-cart-shopping"></i> Cart (0)
-        </a>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom py-3 sticky-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">Ecommerce</a>
+  
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link " href="/Index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/Products.html">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/About.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Contact.html">Contact</a>
+          </li>
+        </ul>
+  
+        <div class="d-flex gap-2">
+          <a href="Login.html" class="btn btn-outline-secondary">
+            <i class="fa-solid fa-right-to-bracket"></i> Login
+          </a>
+          <a href="Register.html" class="btn btn-outline-secondary">
+            <i class="fa-solid fa-user-plus"></i> Register
+          </a>
+          <a href="Cart.html" class="btn btn-outline-secondary">
+            <i class="fa-solid fa-cart-shopping"></i> Cart (<span id="cart-count">0</span>)
+          </a>
+          
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="cart-page container mt-5">
+    <h2 class="text-center mb-4 fw-semi-bold"> Cart</h2>
+    <hr class="mb-5">
+    <div class="row g-4">
+      <div class="col-md-8">
+        <div class="cart-item-list p-3">
+          <h5 class="mb-3">Item List</h5>
+          <ul class="list-group list-group-flush" id="cart-items"></ul>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="summary-container">
+          <h5>Order Summary</h5>
+          <p class="mb-1">Products (<span id="product-count">0</span>) <span class="float-end">$<span id="product-total">0</span></span></p>
+          <p class="mb-1">Shipping <span class="float-end">$<span id="shipping">30</span></span></p>
+          <hr>
+          <p class="fw-bold">Total amount <span class="float-end">$<span id="total">0</span></span></p>
+          <button class="btn btn-dark w-100 mt-3">Go to checkout</button>
+        </div>
       </div>
     </div>
   </div>
-</nav>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function loadCart() {
+      const items = JSON.parse(localStorage.getItem('cart')) || [];
+      const container = document.getElementById('cart-items');
+      const countSpan = document.getElementById('product-count');
+      const productTotal = document.getElementById('product-total');
+      const totalSpan = document.getElementById('total');
+      const shippingSpan = document.getElementById('shipping');
+
+      container.innerHTML = '';
+      let total = 0;
+
+      items.forEach((item, index) => {
+        total += item.price * item.quantity;
+        const li = document.createElement('li');
+        li.className = 'list-group-item d-flex justify-content-between align-items-center';
+        li.innerHTML = `
+          <div class="d-flex justify-content-between align-items-start gap-3">
+  <!-- Left: Image + Title -->
+  <div class="d-flex align-items-start gap-3">
+    <img src="${item.image}" class="cart-img" />
+    <div>
+      <div class="item-title fw-bold">${item.title}</div>
+    </div>
+  </div>
+
+  <!-- Right: Quantity and Price stacked -->
+  <div class="text-end">
+    <div class="d-flex gap-2 justify-content-end mb-1">
+      <button class="btn btn-sm" onclick="decrement(${index})">–</button>
+      <span>${item.quantity}</span>
+      <button class="btn btn-sm" onclick="increment(${index})">+</button>
+    </div>
+    <div class="item-subtitle text-muted small">
+      ${item.quantity} x $${item.price.toFixed(2)}
+    </div>
+  </div>
+</div>
+
+          
+        `;
+        container.appendChild(li);
+      });
+
+      countSpan.textContent = items.reduce((sum, item) => sum + item.quantity, 0);
+      productTotal.textContent = total.toFixed(2);
+      shippingSpan.textContent = items.length > 0 ? 30 : 0;
+      totalSpan.textContent = (total + (items.length > 0 ? 30 : 0)).toFixed(2);
+    }
+
+    function decrement(index) {
+      const items = JSON.parse(localStorage.getItem('cart')) || [];
+      if (items[index].quantity > 1) items[index].quantity--;
+      else items.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(items));
+      loadCart();
+    }
+
+    function increment(index) {
+      const items = JSON.parse(localStorage.getItem('cart')) || [];
+      items[index].quantity++;
+      localStorage.setItem('cart', JSON.stringify(items));
+      loadCart();
+    }
+
+    loadCart();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
