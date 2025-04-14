@@ -1,3 +1,28 @@
+/* Index.html */
+
+.hero-container {
+  position: relative;
+  font-family: Arial, sans-serif;
+  size: 3000px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.hero-container img {
+  width:50%;
+  height: auto;
+  display: block;
+  border-radius: 5px;
+}
+
+.text-block {
+  position: absolute;
+  bottom: 200px;
+  left: 20px;
+  color: white;
+  padding: 1.5rem;    
+  border-radius: 10px;
+}
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
@@ -14,6 +39,7 @@ body {
 
 }
 
+
 .nav-link:hover, 
 .nav-link:focus, 
 .nav-link.active {
@@ -29,7 +55,14 @@ body {
 .btn-outline-secondary {
   color: #000 !important;
   border-color: #000 !important;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.875rem; 
+
 }
+
 
 .btn-outline-secondary:hover {
   background-color: #000 !important;
@@ -42,4 +75,64 @@ body {
     gap: 0.5rem;
     margin-top: 1rem;
   }
+}
+
+
+h2{
+  font-size: 40px;
+}
+p a{
+  color: rgb(17, 181, 231);
+}
+form {
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+
+
+.btn{
+  justify-content: center;
+  align-content: center;
+  width:auto;
+
+}
+
+/* about page */
+footer p{ 
+  margin-bottom:50px;
+}
+
+
+/* product card */
+.card img {
+
+  height: 250px;
+  object-fit: contain;
+}
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+}
+.filter-btn {
+  margin: 0 5px;
+}
+
+
+.card img {
+  height: 250px;
+  object-fit: contain;
+  background-color: #fff;
+}
+.card-title {
+  font-weight: 600;
+}
+.card-text {
+  color: #6c757d;
+}
+.price {
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #212529;
+  margin: 0.5rem 0;
 }
